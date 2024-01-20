@@ -3,8 +3,8 @@ import MyContext from './myContext';
 
 function MyState(props) {
     const state = {
-        name: "Kamal Nayan",
-        class: "9 C"
+        name: "Agrim Gupta",
+        rollno: " 2000270130013"
     }
   return (
     <MyContext.Provider value={state}>

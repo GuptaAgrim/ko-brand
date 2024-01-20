@@ -9,7 +9,7 @@ function Home() {
   return (
   <Layout>
     <h1>Name:{name} </h1>
-    <h1>Roll No. :{rollno}</h1>
+    <h1>Roll No:{rollno}</h1>
     </Layout>
 
 )
