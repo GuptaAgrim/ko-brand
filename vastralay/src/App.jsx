@@ -5,6 +5,8 @@ import NoPage from "./pages/nopage/NoPage";
 import Dashboard from "./pages/admin/dashboard/Dashboard";
 import Cart from "./pages/cart/Cart";
 import MyState from "./context/data/myState";
+import Login from "./pages/registration/Login";
+import Signup from "./pages/registration/Signup";
 
 function App() {
   return (
@@ -15,7 +17,10 @@ function App() {
         <Route path="/order" element={<Order />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         <Route path="/*" element={<NoPage />} />
+        
       </Routes>
     </Router>
     </MyState>
