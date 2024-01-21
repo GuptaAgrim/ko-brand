@@ -6,8 +6,9 @@ function MyState(props) {
         name: "Agrim Gupta",
         rollno: " 2000270130013"
     }
+    const color= "red"
   return (
-    <MyContext.Provider value={state}>
+    <MyContext.Provider value={{state,color}}>
        {props.children}
     </MyContext.Provider>
   )
