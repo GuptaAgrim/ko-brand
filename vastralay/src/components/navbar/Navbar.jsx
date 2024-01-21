@@ -97,7 +97,7 @@ function Navbar() {
           </div>
         </Dialog>
       </Transition.Root>
-     <header className="relative bg-white">
+     <header className="relative bg-white ">
         <p className="flex h-10 items-center justify-center bg-blue-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8" style={{ backgroundColor: mode === 'dark' ? 'rgb(62 64 66)' : '', color: mode === 'dark' ? 'white' : '', }}>
           Get free delivery on orders over ₹300
         </p>
