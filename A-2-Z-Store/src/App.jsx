@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Order from "./pages/order/Order";
 import NoPage from "./pages/nopage/NoPage";
@@ -18,14 +18,30 @@ function App() {
         <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/order" element={<Order />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/order" element={
+          <ProtectedRoute>
+            <Order />
+          </ProtectedRoute>
+        } />
+        <Route path="/dashboard" element={
+          <ProtectedRouteForAdmin>
+            <Dashboard />
+          </ProtectedRouteForAdmin>
+        } />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/login" element={< Login/>} />
-        <Route path="/addProduct" element={<AddProduct/>}/>
-        <Route path="/updateProduct" element={<UpdateProduct/>}/>
+        <Route path="/addProduct" element={
+          <ProtectedRouteForAdmin>
+            <AddProduct/>
+          </ProtectedRouteForAdmin>
+        }/>
+        <Route path="/updateProduct" element={
+          <ProtectedRouteForAdmin>
+            <UpdateProduct/>
+          </ProtectedRouteForAdmin>
+        }/>
         <Route path="/signup" element={<Signup />} />
         <Route path='/productinfo/:id' element={<ProductInfo />} />
         <Route path="/*" element={<NoPage />} />
@@ -39,3 +55,25 @@ function App() {
 }
 
 export default App;
+
+export const ProtectedRoute = ({children}) =>{
+  const user = localStorage.getItem('user')
+  if(user){
+    return children
+  }
+  else{
+    return <Navigate to={'/login'}/>
+  }
+}
+// admin
+const ProtectedRouteForAdmin =({children})=>{
+  const admin = JSON.parse(localStorage.getItem('user'))
+  if(admin.user.email==='agrimgupta26703@gmail.com'){
+    return children;
+  }
+  else 
+  {
+    return <Navigate to ={'/login'}/>
+  }
+  
+}

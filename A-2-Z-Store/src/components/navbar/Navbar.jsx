@@ -13,6 +13,11 @@ function Navbar() {
   const{mode,toggleMode}=context;
 
   const [open, setOpen] = useState(false)
+  const user = JSON.parse(localStorage.getItem('user'));
+  const logout = () =>{
+    localStorage.clear('user');
+    window.location.href= '/login'
+  }
 
   return <div className="bg-white sticky top-0 z-50  " >
     <Transition.Root show={open} as={Fragment}>
@@ -55,23 +60,23 @@ function Navbar() {
                   <Link to={'/allproducts'} className="text-sm font-medium text-gray-900 " style={{ color: mode === 'dark' ? 'white' : '', }}>
                     All Products
                   </Link>
-                  <div className="flow-root">
+                  {user? <div className="flow-root">
                     <Link to={'/order'} style={{ color: mode === 'dark' ? 'white' : '', }} className="-m-2 block p-2 font-medium text-gray-900">
                       Order
                     </Link>
-                  </div>
-
-                  <div className="flow-root">
+                  </div>: ""}
+                {user ?.user?.email==="agrimgupta26703@gmail.com"?<div className="flow-root">
                     <Link to={'/dashboard'} className="-m-2 block p-2 font-medium text-gray-900" style={{ color: mode === 'dark' ? 'white' : '', }}>
                       admin
                     </Link>
-                  </div>
+                  </div> : ""}
+                  
 
-                  <div className="flow-root">
-                    <a className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
+                  {user?<div className="flow-root">
+                    <a onClick={logout} className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer" style={{ color: mode === 'dark' ? 'white' : '', }}>
                       Logout
                     </a>
-                  </div>
+                  </div>: ""}
                   <div className="flow-root">
                     <Link to={'/'} className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer">
                       <img
@@ -132,16 +137,17 @@ function Navbar() {
                   <Link to={'/allproducts'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
                     All Products
                   </Link>
-                  <Link to={'/order'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
+                  {user?<Link to={'/order'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
                     Order
-                  </Link>
-                  <Link to={'/dashboard'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
+                  </Link>: ""}
+                  {user?.user?.email==='agrimgupta26703@gmail.com' ?<Link to={'/dashboard'} className="text-sm font-medium text-gray-700 " style={{ color: mode === 'dark' ? 'white' : '', }}>
                     Admin
-                  </Link>
-
-                  <a className="text-sm font-medium text-gray-700 cursor-pointer  " style={{ color: mode === 'dark' ? 'white' : '', }}>
+                  </Link>:"" }
+                  
+                    {user ? <a onClick={logout} className="text-sm font-medium text-gray-700 cursor-pointer  " style={{ color: mode === 'dark' ? 'white' : '', }}>
                     Logout
-                  </a>
+                  </a>: "" }
+                  
                 </div>
 
                 <div className="hidden lg:ml-8 lg:flex">
