@@ -34,23 +34,25 @@ function MyState(props) {
         }
       )
   
-    })
+    });
     
   // ********************** Add Product Section  **********************
   const addProduct = async () => {
     if (products.title == null || products.price == null || products.imageUrl == null || products.category == null || products.description == null) {
       return toast.error('Please fill all fields')
     }
-    const productRef = collection(fireDB, "products");
-    setLoading(true)
+    
     try {
+      const productRef = collection(fireDB, "products");
+      setLoading(true)
+
       await addDoc(productRef, products)
       toast.success("Product Add successfully");
       setTimeout(()=>{
         window.location.href='/dashboard'
       },800)
       getProductData()
-      closeModal()
+      // closeModal()
       setLoading(false)
     } catch (error) {
       console.log(error)
@@ -67,7 +69,7 @@ function MyState(props) {
     try {
       const q = query(
         collection(fireDB, "products"),
-        orderBy("time"),
+        orderBy('time'),
         // limit(5)
       );
       const data = onSnapshot(q, (QuerySnapshot) => {
@@ -92,7 +94,7 @@ function MyState(props) {
   return (
     <MyContext.Provider value={{ 
       mode, toggleMode, loading,setLoading,
-      products, setProducts,addProduct }}>
+      products, setProducts,addProduct, product }}>
       {props.children}
     </MyContext.Provider>
   )

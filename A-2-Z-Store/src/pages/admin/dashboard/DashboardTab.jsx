@@ -4,10 +4,12 @@ import myContext from '../../../context/data/myContext';
 import { MdOutlineProductionQuantityLimits } from 'react-icons/md';
 import { FaUser, FaCartPlus } from 'react-icons/fa';
 import { AiFillShopping, AiFillPlusCircle, AiFillDelete } from 'react-icons/ai';
-
+import { Link } from 'react-router-dom';
 function DashboardTab() {
     const context = useContext(myContext)
-    const { mode } = context
+    const { mode, product } = context
+    // console.log(product);
+    // console.log("hello baby")
     let [isOpen, setIsOpen] = useState(false)
 
     function closeModal() {
@@ -18,7 +20,7 @@ function DashboardTab() {
         setIsOpen(true)
     }
     const add =()=>{
-        window.location.href='/addproduct'
+        window.location.href='/addproduct/'
     }
     return (
         <>
@@ -85,25 +87,29 @@ function DashboardTab() {
                                                 </th>
                                             </tr>
                                         </thead>
-                                        <tbody className=''>
+                                        {product.map((item,index)=>{
+                                            const{title,price,imageUrl,category,description,date}=item;
+                                            return (
+
+                                                <tbody className=''>
                                             <tr className="bg-gray-50 border-b  dark:border-gray-700" style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '', }} >
                                                 <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                    1.
+                                                    {index + 1}
                                                 </td>
                                                 <th scope="row" className="px-6 py-4 font-medium text-black whitespace-nowrap">
-                                                    <img className='w-16' src="https://dummyimage.com/720x400" alt="img" />
+                                                    <img className='w-16' src={imageUrl} alt="img" />
                                                 </th>
                                                 <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                    Title
+                                                   {title}
                                                 </td>
                                                 <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                    ₹100
+                                                    ₹{price}
                                                 </td>
                                                 <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                    pots
+                                                    {category}
                                                 </td>
                                                 <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                    12 Aug 2019
+                                                   {date}
                                                 </td>
                                                 <td className="px-6 py-4">
                                                     <div className=" flex gap-2">
@@ -124,6 +130,9 @@ function DashboardTab() {
                                             </tr>
 
                                         </tbody>
+                                            )
+                                        })}
+                                        
                                     </table>
 
                                 </div>
