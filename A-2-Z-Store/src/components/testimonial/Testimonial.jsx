@@ -26,7 +26,7 @@ function Testimonial() {
                                 <img alt="testimonial" className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="https://cdn-icons-png.flaticon.com/128/2763/2763444.png" />
                                 <p  style={{color: mode === 'dark' ? 'white' : ''}}className="leading-relaxed">"This shopping site boasts a sleek design and user-friendly interface, offering a seamless online shopping experience with a diverse product range."</p>
                                 <span className="inline-block h-1 w-10 rounded bg-blue-500 mt-6 mb-4" />
-                                <h2 style={{color: mode === 'dark' ? '#ff4162' : ''}} className="text-gray-900 font-medium title-font tracking-wider text-sm uppercase">Laavanya Yadav</h2>
+                                <h2 style={{color: mode === 'dark' ? '#ff4162' : ''}} className="text-gray-900 font-medium title-font tracking-wider text-sm uppercase">XYZ</h2>
                                 <p style={{color: mode === 'dark' ? 'white' : ''}} className="text-gray-500">UI Develeoper</p>
                             </div>
                         </div>
@@ -35,7 +35,7 @@ function Testimonial() {
                                 <img alt="testimonial" className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src={gaurav} />
                                 <p style={{color: mode === 'dark' ? 'white' : ''}} className="leading-relaxed">"With a clean design and user-friendly interface, this shopping website ensures a smooth online experience. Its diverse product range and straightforward navigation make it an excellent choice for hassle-free and enjoyable shopping."</p>
                                 <span className="inline-block h-1 w-10 rounded bg-blue-500 mt-6 mb-4" />
-                                <h2 style={{color: mode === 'dark' ? '#ff4162' : ''}} className="text-gray-900 font-medium title-font tracking-wider text-sm uppercase">Gaurav Verma</h2>
+                                <h2 style={{color: mode === 'dark' ? '#ff4162' : ''}} className="text-gray-900 font-medium title-font tracking-wider text-sm uppercase">Agrim Gupta</h2>
                                 <p  style={{color: mode === 'dark' ? 'white' : ''}}className="text-gray-500">CTO</p>
                             </div>
                         </div>
