@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteFromCart } from '../../redux/cartSlice';
 import { toast } from 'react-toastify';
 import { addDoc, collection } from 'firebase/firestore';
+import {fireDB } from '../../firebase/FirebaseConfig';
 
 
 function Cart() {
@@ -25,17 +26,22 @@ function Cart() {
 
   },[cartItems])
   const[totalAmount,setTotalAmount]=useState(0);
+  console.log('1');
   useEffect(()=>{
     let temp=0;
     cartItems.forEach((cartItems)=>{
       temp=temp + parseInt(cartItems.price)
+      console.log('2');
     })
+
     setTotalAmount(temp);
+    console.log('3');
     // console.log(temp);
 
   },[cartItems])
   const shipping= parseInt(100);
   const grandTotal = shipping + totalAmount;
+  console.log('4');
   // console.log(grandTotal);
   const [name, setName] = useState("")
   const [address, setAddress] = useState("");
@@ -70,6 +76,7 @@ function Cart() {
         }
       )
     }
+    
     var options = {
       key: "rzp_test_7At17HGqVTZgmK",
       key_secret: "PpfgmFa5FiXbL4g5EwcXgwF5",
@@ -94,21 +101,25 @@ function Cart() {
             year: "numeric",
           }
         ),
+        
         email: JSON.parse(localStorage.getItem("user")).user.email,
         userid: JSON.parse(localStorage.getItem("user")).user.uid,
         paymentId
+        
       
 
 
       }
+      
       console.log("hello hello",orderInfo);
       try {
+        
         const orderRef=collection(fireDB,'order');
         addDoc(orderRef,orderInfo)
 
       }
       catch(error){
-        console.log(error);
+        console.log(error,"hello ");
       }
     },
   
@@ -120,6 +131,7 @@ function Cart() {
   var pay = new window.Razorpay(options);
   pay.open();
   console.log(pay)
+  console.log(orderInfo);
 
   }
   return (
