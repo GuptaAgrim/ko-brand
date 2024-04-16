@@ -143,7 +143,7 @@ function DashboardTab() {
                         </TabPanel>
                         <TabPanel>
                             {/* <Order order={order} setOrder={setOrder} setLoading={setLoading} /> */}
-                            <div className="relative overflow-x-auto mb-16">
+                            <div className="relative overflow-x-auto mb-16 z-[999]">
                                 <h1 className=' text-center mb-5 text-3xl font-semibold underline' style={{ color: mode === 'dark' ? 'white' : '' }}>Order Details</h1>
                                         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400" >
                                             <thead  className="text-xs text-black uppercase bg-gray-200 " style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '', }} >
