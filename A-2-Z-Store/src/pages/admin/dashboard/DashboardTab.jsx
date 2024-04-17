@@ -7,7 +7,7 @@ import { AiFillShopping, AiFillPlusCircle, AiFillDelete } from 'react-icons/ai';
 import { Link,Navigate } from 'react-router-dom';
 function DashboardTab() {
     const context = useContext(myContext)
-    const { mode, product, edithandle,deleteProduct,order } = context
+    const { mode, product, edithandle,deleteProduct,order,user } = context
     // console.log(product);
     // console.log("hello baby")
     let [isOpen, setIsOpen] = useState(false)
@@ -246,57 +246,44 @@ function DashboardTab() {
                                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                     <thead className="text-xs text-black uppercase bg-gray-200 " style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '', }} >
                                         <tr>
+                                            
                                             <th scope="col" className="px-6 py-3">
                                                 S.No
                                             </th>
-
                                             <th scope="col" className="px-6 py-3">
-                                                Name
-                                            </th>
-                                            <th scope="col" className="px-6 py-3">
-                                                Address
-                                            </th>
-                                            <th scope="col" className="px-6 py-3">
-                                                Pincode
-                                            </th>
-                                            <th scope="col" className="px-6 py-3">
-                                                Phone Number
+                                               Name
                                             </th>
                                             <th scope="col" className="px-6 py-3">
                                                 Email
                                             </th>
                                             <th scope="col" className="px-6 py-3">
-                                                Date
+                                                U-ID
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    {user.map((item,index)=>{
+                                        const {name,uid,email,date}=item;
+                                        return (
+                                            <tbody>
                                       
-                                                <tr className="bg-gray-50 border-b  dark:border-gray-700" style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '', }} >
-                                                    <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                        1.
-                                                    </td>
-                                                    <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                        Name
-                                                    </td>
-                                                    <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                        Address
-                                                    </td>
-                                                    <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                        181919
-                                                    </td>
-                                                    <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                        1991818818
-                                                    </td>
-                                                    <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                       kkk@gmail.com
-                                                    </td>
-                                                    <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
-                                                        12 Aug 2019
-                                                    </td>
+                                      <tr className="bg-gray-50 border-b  dark:border-gray-700" style={{ backgroundColor: mode === 'dark' ? 'rgb(46 49 55)' : '', color: mode === 'dark' ? 'white' : '', }} >
+                                            <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
+                                               {index + 1}.
+                                            </td>
+                                            <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
+                                                {name}
+                                            </td>
+                                            <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
+                                                {email}
+                                            </td>
+                                            <td className="px-6 py-4 text-black " style={{ color: mode === 'dark' ? 'white' : '' }}>
+                                                {uid}
+                                            </td>
 
-                                                </tr>
+                                        </tr>
                                     </tbody>
+                                        )
+                                    })}
                                 </table>
                             </div>
                         </TabPanel>
